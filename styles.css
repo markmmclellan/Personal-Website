@@ -53,8 +53,11 @@ img {
     align-items: center;
     flex-wrap: wrap;
     padding: 24px 40px;
-    background-color: var(--bg-alt);
-    border-bottom: 1px solid var(--border);
+    background-color: rgba(0, 40, 20, 0.28);
+    backdrop-filter: blur(10px) saturate(140%);
+    -webkit-backdrop-filter: blur(10px) saturate(140%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
     position: sticky;
     top: 0;
     z-index: 10;
@@ -315,6 +318,20 @@ p {
     margin-left: 16px;
 }
 
+.project-list {
+    margin: 4px 0 4px 20px;
+    font-size: 15px;
+    color: var(--text-muted);
+}
+
+.project-list li {
+    margin-bottom: 8px;
+}
+
+.project-list strong {
+    color: var(--text);
+}
+
 .project-card h4 {
     font-size: 16px;
     margin: 20px 0 6px;
@@ -462,16 +479,19 @@ textarea {
     margin-bottom: 6px;
 }
 
-.resume-download {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-    margin-top: 20px;
-    margin-bottom: 40px;
+.lang-tag {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 2px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 999px;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
 }
 
-.resume-download .button {
-    margin-top: 0;
+.resume-card .button {
+    margin-top: 8px;
 }
 
 footer {
