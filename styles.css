@@ -279,6 +279,10 @@ p {
     gap: 24px;
 }
 
+.project-grid + .project-grid {
+    margin-top: 24px;
+}
+
 .project-card {
     background-color: rgba(0, 40, 20, 0.28);
     backdrop-filter: blur(6px) saturate(140%);
@@ -319,13 +323,15 @@ p {
 }
 
 .project-list {
-    margin: 4px 0 4px 20px;
+    margin: 8px 0 4px;
+    padding-left: 24px;
     font-size: 15px;
     color: var(--text-muted);
 }
 
 .project-list li {
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+    padding-left: 4px;
 }
 
 .project-list strong {
