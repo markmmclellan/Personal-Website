@@ -72,7 +72,21 @@
                 <p>I used Tailscale instead of port forwarding, so nothing on my home network is exposed to the public internet. Only my own authenticated devices can reach the model.</p>
 
                 <h4>What I learned</h4>
-                <p>I originally built it as a coding assistant, but models this small turned out to be poor at coding work. I repurposed it for creative writing and recreation, which is where it shines.</p>
+                <p>I originally built it as a coding assistant, but models this small turned out to be poor at coding work. I repurposed it as a general assistant and for recreation, which is where it shines.</p>
+            </div>
+        </div>
+
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>Dogeared: Personal Reading Library (PWA)</h3>
+                <p>A mobile-first, installable web app for importing, organizing and reading long-form text. It's a serverless, single-user app built on Cloudflare Workers and D1 (SQLite) with a Vite-built vanilla JavaScript front end, and it runs entirely on Cloudflare's free tier.</p>
+                <ul class="project-list">
+                    <li><strong>Security:</strong> password login with HMAC-signed, HttpOnly session cookies, constant-time comparison, and per-IP brute-force protection with escalating lockouts and optional email alerts.</li>
+                    <li><strong>Safe imports:</strong> EPUB, HTML and plain-text import with content sanitized through DOMPurify, plus an HTTPS-only, allowlisted server-side fetch proxy.</li>
+                    <li><strong>Offline reading:</strong> a service worker with IndexedDB and Cache API storage lets saved material be read without a connection.</li>
+                    <li><strong>Library features:</strong> reading progress, bookmarks with notes, shelves, series ordering, search, and JSON backup/export.</li>
+                    <li><strong>Data layer:</strong> a relational schema with foreign keys and cascading deletes, evolved through versioned SQL migrations.</li>
+                </ul>
             </div>
         </div>
     </main>
