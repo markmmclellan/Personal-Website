@@ -293,14 +293,66 @@ p {
         inset 0 1px 0 rgba(255, 255, 255, 0.25);
     border-radius: 16px;
     padding: 24px;
-    transition: box-shadow 0.15s ease, background-color 0.15s ease;
+    position: relative;
+    isolation: isolate;
+    transition:
+        opacity 0.7s ease,
+        translate 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+        transform 0.2s ease,
+        box-shadow 0.15s ease,
+        background-color 0.15s ease;
 }
 
 .project-card:hover {
+    transform: translateY(-4px);
     background-color: rgba(0, 40, 20, 0.36);
     box-shadow:
         0 10px 22px rgba(0, 0, 0, 0.28),
         inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+/* Cursor-following glow, painted under the card's content */
+.project-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: radial-gradient(
+        320px circle at var(--mx, 50%) var(--my, 50%),
+        rgba(255, 255, 255, 0.16),
+        transparent 60%
+    );
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+
+/* Entrance: cards start hidden only when JS is available, so they never get stuck invisible */
+.js .project-card {
+    opacity: 0;
+    translate: 0 32px;
+}
+
+.js .project-card.in {
+    opacity: 1;
+    translate: 0 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .js .project-card {
+        opacity: 1;
+        translate: none;
+        transition: none;
+    }
+
+    .project-card::before {
+        display: none;
+    }
 }
 
 .project-card h3 {
@@ -387,8 +439,31 @@ p {
 
 .flow-arrow::before {
     content: '\2192';
+    display: inline-block;
     font-size: 22px;
     color: var(--text-muted);
+    animation: flow-pulse 1.6s ease-in-out infinite;
+}
+
+.flow-arrow + .flow-node + .flow-arrow::before {
+    animation-delay: 0.5s;
+}
+
+@keyframes flow-pulse {
+    0%, 100% {
+        opacity: 0.35;
+        transform: translateX(-3px);
+    }
+    50% {
+        opacity: 1;
+        transform: translateX(5px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .flow-arrow::before {
+        animation: none;
+    }
 }
 
 @media (max-width: 640px) {
@@ -403,6 +478,18 @@ p {
 
     .flow-arrow::before {
         content: '\2193';
+        animation-name: flow-pulse-down;
+    }
+}
+
+@keyframes flow-pulse-down {
+    0%, 100% {
+        opacity: 0.35;
+        transform: translateY(-3px);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(5px);
     }
 }
 
