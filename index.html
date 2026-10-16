@@ -46,10 +46,14 @@
             <a href="#home" class="navbar-name">Mark McLellan</a>
         </div>
         <div class="navbar-right">
-            <a href="#home">Home</a>
-            <a href="#projects">Projects</a>
-            <a href="#resume">Resume</a>
-            <a href="#contact">Contact</a>
+            <a href="#home" data-i18n="nav.home">Home</a>
+            <a href="#projects" data-i18n="nav.projects">Projects</a>
+            <a href="#resume" data-i18n="nav.resume">Resume</a>
+            <a href="#contact" data-i18n="nav.contact">Contact</a>
+            <div class="lang-toggle" role="group" aria-label="Language">
+                <button type="button" data-lang="en" aria-pressed="true">EN</button>
+                <button type="button" data-lang="ja" aria-pressed="false">日本語</button>
+            </div>
         </div>
     </nav>
 
@@ -58,12 +62,12 @@
             <img src="GraduationPortrait.JPG" alt="Graduation Portrait" width="260" height="260">
 
             <div class="bio-text">
-                <h1>Hi, I'm <span id="typed-text"></span><span class="typed-cursor">|</span></h1>
-                <p>
+                <h1><span data-i18n="hero.hi">Hi, I'm </span><span id="typed-text"></span><span class="typed-cursor">|</span></h1>
+                <p data-i18n="hero.bio">
                     Rutgers University graduate with a Bachelor's in Information Technology & Informatics and a minor in Economics. Growing up between Tokyo and New Jersey sparked a lifelong curiosity for how complex systems work—whether that's troubleshooting hardware and software issues or exploring the ocean depths. I thrive on tackling hands-on technical challenges, and learning new technologies.
                 </p>
                 <ul class="tag-list">
-                    <li><span class="pill">B.A. in IT &amp; Informatics</span></li>
+                    <li><span class="pill" data-i18n="pill.degree">B.A. in IT &amp; Informatics</span></li>
                     <li>
                         <a class="pill" href="https://www.credly.com/badges/8615ea12-2bb7-4987-b789-14b8177d3f2a/public_url" target="_blank" rel="noopener">CompTIA Security+</a>
                         <div class="cert-popover">
@@ -81,9 +85,9 @@
                         </div>
                     </li>
                     <li><span class="pill">TestOut Security Pro</span></li>
-                    <li><span class="pill">PADI Open Water Scuba Diver</span></li>
+                    <li><span class="pill" data-i18n="pill.padi">PADI Open Water Scuba Diver</span></li>
                 </ul>
-                <a class="button" href="#resume">View My Resume</a>
+                <a class="button" href="#resume" data-i18n="btn.viewresume">View My Resume</a>
 
                 <ul class="social-links">
                     <li>
@@ -112,114 +116,114 @@
         </section>
 
         <section>
-            <h2 class="section-title">About Me</h2>
-            <p>
+            <h2 class="section-title" data-i18n="about.title">About Me</h2>
+            <p data-i18n="about.body">
                 Outside of tech, I spend my free time reading, gaming, swimming, and traveling whenever I can. Growing up between Tokyo and New Jersey gave me a deep appreciation for exploring new places, experiencing different cultures, and adapting to new environments. I have a natural curiosity for how things work—whether that means breaking down complex game systems, staying active in the water, or taking on a new hands-on project. I just enjoy staying curious, learning new skills on the fly, and seeing how far I can push my interests.
             </p>
         </section>
 
         <section id="projects">
-            <h2 class="section-title">Projects</h2>
+            <h2 class="section-title" data-i18n="proj.title">Projects</h2>
 
             <div class="project-grid">
                 <div class="project-card">
-                    <h3>Personal Website</h3>
-                    <p>This site — built with HTML, JavaScript, and CSS to showcase my background, resume, and projects.</p>
+                    <h3 data-i18n="proj.site.title">Personal Website</h3>
+                    <p data-i18n="proj.site.body">This site — built with HTML, JavaScript, and CSS to showcase my background, resume, and projects.</p>
                 </div>
             </div>
 
             <div class="project-grid">
                 <div class="project-card">
-                    <h3>V-Calc: Pokémon Champions Damage &amp; Speed Calculator</h3>
-                    <p>A Showdown-style damage and turn-order calculator for Pokémon Champions, built with React and TypeScript on top of the @smogon/calc Champions ruleset. Pulls live usage data from op.gg via a custom scraper so popular moves, items, abilities, natures and Stat Point spreads apply in one click, supports Doubles with spread-move handling, team import/export from Showdown pastes, and saved presets. Deployed to GitHub Pages with a scheduled workflow that rebuilds every 6 hours to keep the data fresh.</p>
-                    <a href="https://markmmclellan.github.io/V-Calc/" target="_blank" rel="noopener">Live Calculator &rarr;</a>
-                    <a href="https://github.com/markmmclellan/v-calc" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+                    <h3 data-i18n="proj.vcalc.title">V-Calc: Pokémon Champions Damage &amp; Speed Calculator</h3>
+                    <p data-i18n="proj.vcalc.body">A Showdown-style damage and turn-order calculator for Pokémon Champions, built with React and TypeScript on top of the @smogon/calc Champions ruleset. Pulls live usage data from op.gg via a custom scraper so popular moves, items, abilities, natures and Stat Point spreads apply in one click, supports Doubles with spread-move handling, team import/export from Showdown pastes, and saved presets. Deployed to GitHub Pages with a scheduled workflow that rebuilds every 6 hours to keep the data fresh.</p>
+                    <a href="https://markmmclellan.github.io/V-Calc/" target="_blank" rel="noopener" data-i18n="link.live">Live Calculator &rarr;</a>
+                    <a href="https://github.com/markmmclellan/v-calc" target="_blank" rel="noopener" data-i18n="link.github">View on GitHub &rarr;</a>
                 </div>
             </div>
 
             <div class="project-grid">
                 <div class="project-card">
-                    <h3>Self Hosted Local LLM &amp; Interface Stack</h3>
-                    <p>An end-to-end local AI environment running on my own hardware. Koboldcpp serves a Gemma 4 12B (QAT) model as an API backend, and SillyTavern provides the front end for session management and prompt customization. I reach it from my phone from anywhere over Tailscale.</p>
+                    <h3 data-i18n="proj.llm.title">Self Hosted Local LLM &amp; Interface Stack</h3>
+                    <p data-i18n="proj.llm.body">An end-to-end local AI environment running on my own hardware. Koboldcpp serves a Gemma 4 12B (QAT) model as an API backend, and SillyTavern provides the front end for session management and prompt customization. I reach it from my phone from anywhere over Tailscale.</p>
 
-                    <div class="flow" role="img" aria-label="Diagram: a phone connects over a Tailscale WireGuard tunnel to a home PC running SillyTavern, Koboldcpp and the Gemma 4 12B model.">
+                    <div class="flow" role="img" data-i18n-aria="flow.aria" aria-label="Diagram: a phone connects over a Tailscale WireGuard tunnel to a home PC running SillyTavern, Koboldcpp and the Gemma 4 12B model.">
                         <div class="flow-node">
-                            <strong>Phone</strong>
-                            <span>Browser, from anywhere</span>
+                            <strong data-i18n="flow.phone">Phone</strong>
+                            <span data-i18n="flow.phone.sub">Browser, from anywhere</span>
                         </div>
                         <div class="flow-arrow" aria-hidden="true"></div>
                         <div class="flow-node">
-                            <strong>Tailscale</strong>
-                            <span>WireGuard-encrypted mesh, no open ports</span>
+                            <strong data-i18n="flow.ts">Tailscale</strong>
+                            <span data-i18n="flow.ts.sub">WireGuard-encrypted mesh, no open ports</span>
                         </div>
                         <div class="flow-arrow" aria-hidden="true"></div>
                         <div class="flow-node flow-host">
-                            <strong>Home PC</strong>
+                            <strong data-i18n="flow.pc">Home PC</strong>
                             <span>RTX 5080 16 GB &middot; 32 GB RAM</span>
                             <ul>
-                                <li>SillyTavern (front end)</li>
-                                <li>Koboldcpp (API backend)</li>
+                                <li data-i18n="flow.li.st">SillyTavern (front end)</li>
+                                <li data-i18n="flow.li.kobold">Koboldcpp (API backend)</li>
                                 <li>Gemma 4 12B QAT</li>
                             </ul>
                         </div>
                     </div>
 
-                    <h4>Security</h4>
-                    <p>I used Tailscale instead of port forwarding, so nothing on my home network is exposed to the public internet. Only my own authenticated devices can reach the model.</p>
+                    <h4 data-i18n="sec.title">Security</h4>
+                    <p data-i18n="sec.body">I used Tailscale instead of port forwarding, so nothing on my home network is exposed to the public internet. Only my own authenticated devices can reach the model.</p>
 
-                    <h4>What I learned</h4>
-                    <p>I originally built it as a coding assistant, but models this small turned out to be poor at coding work. I repurposed it as a general assistant and for recreation, which is where it shines.</p>
+                    <h4 data-i18n="learn.title">What I learned</h4>
+                    <p data-i18n="learn.body">I originally built it as a coding assistant, but models this small turned out to be poor at coding work. I repurposed it as a general assistant and for recreation, which is where it shines.</p>
                 </div>
             </div>
 
             <div class="project-grid">
                 <div class="project-card">
-                    <h3>Dogeared: Personal Reading Library (PWA)</h3>
-                    <p>A mobile-first, installable web app for importing, organizing and reading long-form text. It's a serverless, single-user app built on Cloudflare Workers and D1 (SQLite) with a Vite-built vanilla JavaScript front end, and it runs entirely on Cloudflare's free tier.</p>
+                    <h3 data-i18n="proj.dog.title">Dogeared: Personal Reading Library (PWA)</h3>
+                    <p data-i18n="proj.dog.body">A mobile-first, installable web app for importing, organizing and reading long-form text. It's a serverless, single-user app built on Cloudflare Workers and D1 (SQLite) with a Vite-built vanilla JavaScript front end, and it runs entirely on Cloudflare's free tier.</p>
                     <ul class="project-list">
-                        <li><strong>Security:</strong> password login with HMAC-signed, HttpOnly session cookies, constant-time comparison, and per-IP brute-force protection with escalating lockouts and optional email alerts.</li>
-                        <li><strong>Safe imports:</strong> EPUB, HTML and plain-text import with content sanitized through DOMPurify, plus an HTTPS-only, allowlisted server-side fetch proxy.</li>
-                        <li><strong>Offline reading:</strong> a service worker with IndexedDB and Cache API storage lets saved material be read without a connection.</li>
-                        <li><strong>Library features:</strong> reading progress, bookmarks with notes, shelves, series ordering, search, and JSON backup/export.</li>
-                        <li><strong>Data layer:</strong> a relational schema with foreign keys and cascading deletes, evolved through versioned SQL migrations.</li>
+                        <li data-i18n="dog.li1"><strong>Security:</strong> password login with HMAC-signed, HttpOnly session cookies, constant-time comparison, and per-IP brute-force protection with escalating lockouts and optional email alerts.</li>
+                        <li data-i18n="dog.li2"><strong>Safe imports:</strong> EPUB, HTML and plain-text import with content sanitized through DOMPurify, plus an HTTPS-only, allowlisted server-side fetch proxy.</li>
+                        <li data-i18n="dog.li3"><strong>Offline reading:</strong> a service worker with IndexedDB and Cache API storage lets saved material be read without a connection.</li>
+                        <li data-i18n="dog.li4"><strong>Library features:</strong> reading progress, bookmarks with notes, shelves, series ordering, search, and JSON backup/export.</li>
+                        <li data-i18n="dog.li5"><strong>Data layer:</strong> a relational schema with foreign keys and cascading deletes, evolved through versioned SQL migrations.</li>
                     </ul>
                 </div>
             </div>
         </section>
 
         <section id="resume">
-            <h2 class="section-title">Resume</h2>
-            <p style="margin-bottom: 24px;">Download my resume in English or Japanese.</p>
+            <h2 class="section-title" data-i18n="resume.title">Resume</h2>
+            <p style="margin-bottom: 24px;" data-i18n="resume.intro">Download my resume in English or Japanese.</p>
 
             <div class="project-grid">
                 <div class="project-card resume-card">
                     <span class="lang-tag">EN</span>
-                    <h3>English Resume</h3>
-                    <p>Entry-level IT professional with a B.A. in IT, CompTIA A+ and Security+, and hands-on support experience.</p>
-                    <a class="button" href="resume.pdf" target="_blank" rel="noopener">Open PDF</a>
+                    <h3 data-i18n="resume.en.title">English Resume</h3>
+                    <p data-i18n="resume.en.body">Entry-level IT professional with a B.A. in IT, CompTIA A+ and Security+, and hands-on support experience.</p>
+                    <a class="button" href="resume.pdf" target="_blank" rel="noopener" data-i18n="btn.pdf">Open PDF</a>
                 </div>
 
                 <div class="project-card resume-card">
                     <span class="lang-tag">日本語</span>
                     <h3>履歴書</h3>
-                    <p>My resume in the standard Japanese format.</p>
-                    <a class="button" href="rirekisho.pdf" target="_blank" rel="noopener">Open PDF</a>
+                    <p data-i18n="resume.jp.body">My resume in the standard Japanese format.</p>
+                    <a class="button" href="rirekisho.pdf" target="_blank" rel="noopener" data-i18n="btn.pdf">Open PDF</a>
                 </div>
             </div>
         </section>
 
         <section id="contact">
-            <h2 class="section-title">Contact</h2>
+            <h2 class="section-title" data-i18n="contact.title">Contact</h2>
 
             <div class="contact-grid">
                 <div class="contact-info">
-                    <p>
+                    <p data-i18n="contact.intro">
                         I'd love to hear from you! Whether you have questions, collaboration opportunities,
                         or just want to say hello, feel free to reach out using the form or directly through
                         the links below.
                     </p>
                     <ul class="contact-links">
-                        <li>Email: <a href="mailto:markmmclellan@gmail.com">markmmclellan@gmail.com</a></li>
+                        <li><span data-i18n="contact.email">Email: </span><a href="mailto:markmmclellan@gmail.com">markmmclellan@gmail.com</a></li>
                         <li>LinkedIn: <a href="https://www.linkedin.com/in/markmmclellan/" target="_blank" rel="noopener">linkedin.com/in/markmmclellan</a></li>
                     </ul>
                 </div>
@@ -227,30 +231,30 @@
                 <form class="contact-form" action="mailto:markmmclellan@gmail.com" method="post" enctype="text/plain">
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="fname">First name</label>
-                            <input type="text" id="fname" name="fname" placeholder="John" required>
+                            <label for="fname" data-i18n="form.fname">First name</label>
+                            <input type="text" id="fname" name="fname" placeholder="John" data-i18n-placeholder="ph.fname" required>
                         </div>
                         <div class="form-group">
-                            <label for="lname">Last name</label>
-                            <input type="text" id="lname" name="lname" placeholder="Doe" required>
+                            <label for="lname" data-i18n="form.lname">Last name</label>
+                            <input type="text" id="lname" name="lname" placeholder="Doe" data-i18n-placeholder="ph.lname" required>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="email">Email</label>
+                            <label for="email" data-i18n="form.email">Email</label>
                             <input type="email" id="email" name="email" placeholder="john@example.com" required>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" placeholder="Enter your message here..." required></textarea>
+                            <label for="message" data-i18n="form.message">Message</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Enter your message here..." data-i18n-placeholder="ph.message" required></textarea>
                         </div>
                     </div>
 
-                    <button type="submit" class="button">Send Message</button>
+                    <button type="submit" class="button" data-i18n="btn.send">Send Message</button>
                 </form>
             </div>
         </section>
@@ -260,6 +264,8 @@
         &copy; 2026 Mark McLellan
     </footer>
 
+    <script src="translations.js"></script>
+    <script src="i18n.js"></script>
     <script src="typewriter.js"></script>
     <script src="tilt.js"></script>
     <script src="particles.js"></script>

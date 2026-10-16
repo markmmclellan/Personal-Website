@@ -1,12 +1,3 @@
-const phrases = [
-    'Mark.',
-    'an IT Professional.',
-    'a Tech Enthusiast.',
-    'an Explorer.',
-    'a Scuba Diver.',
-    'an Animal Lover.'
-];
-
 const typedEl = document.getElementById('typed-text');
 
 const TYPE_SPEED = 90;
@@ -16,21 +7,27 @@ const GAP_TIME = 300;
 
 let phraseIndex = 0;
 let charIndex = 0;
+let deleting = false;
+let timer = null;
+
+function currentPhrases() {
+    return TYPED_PHRASES[document.documentElement.lang === 'ja' ? 'ja' : 'en'];
+}
 
 function tick() {
+    const phrases = currentPhrases();
     const phrase = phrases[phraseIndex];
-    const deleting = tick.deleting;
 
     if (!deleting) {
         charIndex++;
         typedEl.textContent = phrase.slice(0, charIndex);
 
         if (charIndex === phrase.length) {
-            tick.deleting = true;
-            setTimeout(tick, HOLD_TIME);
+            deleting = true;
+            timer = setTimeout(tick, HOLD_TIME);
             return;
         }
-        setTimeout(tick, TYPE_SPEED);
+        timer = setTimeout(tick, TYPE_SPEED);
         return;
     }
 
@@ -38,15 +35,24 @@ function tick() {
     typedEl.textContent = phrase.slice(0, charIndex);
 
     if (charIndex === 0) {
-        tick.deleting = false;
+        deleting = false;
         phraseIndex = (phraseIndex + 1) % phrases.length;
-        setTimeout(tick, GAP_TIME);
+        timer = setTimeout(tick, GAP_TIME);
         return;
     }
-    setTimeout(tick, DELETE_SPEED);
+    timer = setTimeout(tick, DELETE_SPEED);
 }
 
-if (typedEl && phrases.length) {
-    tick.deleting = false;
+function restart() {
+    clearTimeout(timer);
+    phraseIndex = 0;
+    charIndex = 0;
+    deleting = false;
+    typedEl.textContent = '';
     tick();
+}
+
+if (typedEl) {
+    document.addEventListener('langchange', restart);
+    restart();
 }
