@@ -97,7 +97,11 @@ img {
 }
 
 section + section {
-    margin-top: 60px;
+    margin-top: 90px;
+}
+
+section[id] {
+    scroll-margin-top: 100px;
 }
 
 h1 {

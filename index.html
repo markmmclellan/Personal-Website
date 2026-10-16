@@ -35,6 +35,7 @@
     <meta name="twitter:description" content="Rutgers graduate with CompTIA Security+ and A+. Portfolio, projects and resume.">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link rel="icon" type="image/x-icon" href="RunningMan.ico">
+    <script>document.documentElement.classList.add('js');</script>
 </head>
 
 <body>
@@ -42,18 +43,18 @@
 
     <nav class="navbar">
         <div class="navbar-left">
-            <a href="index.html" class="navbar-name">Mark McLellan</a>
+            <a href="#home" class="navbar-name">Mark McLellan</a>
         </div>
         <div class="navbar-right">
-            <a class="active" href="index.html">Home</a>
-            <a href="project.html">Projects</a>
-            <a href="resume.html">Resume</a>
-            <a href="contact.html">Contact</a>
+            <a href="#home">Home</a>
+            <a href="#projects">Projects</a>
+            <a href="#resume">Resume</a>
+            <a href="#contact">Contact</a>
         </div>
     </nav>
 
     <main class="page">
-        <section class="bio">
+        <section class="bio" id="home">
             <img src="GraduationPortrait.JPG" alt="Graduation Portrait" width="260" height="260">
 
             <div class="bio-text">
@@ -82,7 +83,7 @@
                     <li><span class="pill">TestOut Security Pro</span></li>
                     <li><span class="pill">PADI Open Water Scuba Diver</span></li>
                 </ul>
-                <a class="button" href="resume.html">View My Resume</a>
+                <a class="button" href="#resume">View My Resume</a>
 
                 <ul class="social-links">
                     <li>
@@ -116,6 +117,143 @@
                 Outside of tech, I spend my free time reading, gaming, swimming, and traveling whenever I can. Growing up between Tokyo and New Jersey gave me a deep appreciation for exploring new places, experiencing different cultures, and adapting to new environments. I have a natural curiosity for how things work—whether that means breaking down complex game systems, staying active in the water, or taking on a new hands-on project. I just enjoy staying curious, learning new skills on the fly, and seeing how far I can push my interests.
             </p>
         </section>
+
+        <section id="projects">
+            <h2 class="section-title">Projects</h2>
+
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>Personal Website</h3>
+                    <p>This site — built with HTML, JavaScript, and CSS to showcase my background, resume, and projects.</p>
+                </div>
+            </div>
+
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>V-Calc: Pokémon Champions Damage &amp; Speed Calculator</h3>
+                    <p>A Showdown-style damage and turn-order calculator for Pokémon Champions, built with React and TypeScript on top of the @smogon/calc Champions ruleset. Pulls live usage data from op.gg via a custom scraper so popular moves, items, abilities, natures and Stat Point spreads apply in one click, supports Doubles with spread-move handling, team import/export from Showdown pastes, and saved presets. Deployed to GitHub Pages with a scheduled workflow that rebuilds every 6 hours to keep the data fresh.</p>
+                    <a href="https://markmmclellan.github.io/V-Calc/" target="_blank" rel="noopener">Live Calculator &rarr;</a>
+                    <a href="https://github.com/markmmclellan/v-calc" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+                </div>
+            </div>
+
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>Self Hosted Local LLM &amp; Interface Stack</h3>
+                    <p>An end-to-end local AI environment running on my own hardware. Koboldcpp serves a Gemma 4 12B (QAT) model as an API backend, and SillyTavern provides the front end for session management and prompt customization. I reach it from my phone from anywhere over Tailscale.</p>
+
+                    <div class="flow" role="img" aria-label="Diagram: a phone connects over a Tailscale WireGuard tunnel to a home PC running SillyTavern, Koboldcpp and the Gemma 4 12B model.">
+                        <div class="flow-node">
+                            <strong>Phone</strong>
+                            <span>Browser, from anywhere</span>
+                        </div>
+                        <div class="flow-arrow" aria-hidden="true"></div>
+                        <div class="flow-node">
+                            <strong>Tailscale</strong>
+                            <span>WireGuard-encrypted mesh, no open ports</span>
+                        </div>
+                        <div class="flow-arrow" aria-hidden="true"></div>
+                        <div class="flow-node flow-host">
+                            <strong>Home PC</strong>
+                            <span>RTX 5080 16 GB &middot; 32 GB RAM</span>
+                            <ul>
+                                <li>SillyTavern (front end)</li>
+                                <li>Koboldcpp (API backend)</li>
+                                <li>Gemma 4 12B QAT</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h4>Security</h4>
+                    <p>I used Tailscale instead of port forwarding, so nothing on my home network is exposed to the public internet. Only my own authenticated devices can reach the model.</p>
+
+                    <h4>What I learned</h4>
+                    <p>I originally built it as a coding assistant, but models this small turned out to be poor at coding work. I repurposed it as a general assistant and for recreation, which is where it shines.</p>
+                </div>
+            </div>
+
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>Dogeared: Personal Reading Library (PWA)</h3>
+                    <p>A mobile-first, installable web app for importing, organizing and reading long-form text. It's a serverless, single-user app built on Cloudflare Workers and D1 (SQLite) with a Vite-built vanilla JavaScript front end, and it runs entirely on Cloudflare's free tier.</p>
+                    <ul class="project-list">
+                        <li><strong>Security:</strong> password login with HMAC-signed, HttpOnly session cookies, constant-time comparison, and per-IP brute-force protection with escalating lockouts and optional email alerts.</li>
+                        <li><strong>Safe imports:</strong> EPUB, HTML and plain-text import with content sanitized through DOMPurify, plus an HTTPS-only, allowlisted server-side fetch proxy.</li>
+                        <li><strong>Offline reading:</strong> a service worker with IndexedDB and Cache API storage lets saved material be read without a connection.</li>
+                        <li><strong>Library features:</strong> reading progress, bookmarks with notes, shelves, series ordering, search, and JSON backup/export.</li>
+                        <li><strong>Data layer:</strong> a relational schema with foreign keys and cascading deletes, evolved through versioned SQL migrations.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="resume">
+            <h2 class="section-title">Resume</h2>
+            <p style="margin-bottom: 24px;">Download my resume in English or Japanese.</p>
+
+            <div class="project-grid">
+                <div class="project-card resume-card">
+                    <span class="lang-tag">EN</span>
+                    <h3>English Resume</h3>
+                    <p>Entry-level IT professional with a B.A. in IT, CompTIA A+ and Security+, and hands-on support experience.</p>
+                    <a class="button" href="resume.pdf" target="_blank" rel="noopener">Open PDF</a>
+                </div>
+
+                <div class="project-card resume-card">
+                    <span class="lang-tag">日本語</span>
+                    <h3>履歴書</h3>
+                    <p>My resume in the standard Japanese format.</p>
+                    <a class="button" href="rirekisho.pdf" target="_blank" rel="noopener">Open PDF</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2 class="section-title">Contact</h2>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <p>
+                        I'd love to hear from you! Whether you have questions, collaboration opportunities,
+                        or just want to say hello, feel free to reach out using the form or directly through
+                        the links below.
+                    </p>
+                    <ul class="contact-links">
+                        <li>Email: <a href="mailto:markmmclellan@gmail.com">markmmclellan@gmail.com</a></li>
+                        <li>LinkedIn: <a href="https://www.linkedin.com/in/markmmclellan/" target="_blank" rel="noopener">linkedin.com/in/markmmclellan</a></li>
+                    </ul>
+                </div>
+
+                <form class="contact-form" action="mailto:markmmclellan@gmail.com" method="post" enctype="text/plain">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fname">First name</label>
+                            <input type="text" id="fname" name="fname" placeholder="John" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lname">Last name</label>
+                            <input type="text" id="lname" name="lname" placeholder="Doe" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Enter your message here..." required></textarea>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="button">Send Message</button>
+                </form>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -125,6 +263,8 @@
     <script src="typewriter.js"></script>
     <script src="tilt.js"></script>
     <script src="particles.js"></script>
+    <script src="cards.js"></script>
+    <script src="nav.js"></script>
     <script async src="https://cdn.credly.com/assets/utilities/embed.js"></script>
 </body>
 </html>
