@@ -13,9 +13,6 @@ function updateActiveLink() {
         if (section.offsetTop <= y) current = section;
     });
 
-    const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
-    if (atBottom) current = navSections[navSections.length - 1];
-
     navLinks.forEach((link) => {
         link.classList.toggle('active', link.getAttribute('href') === `#${current.id}`);
     });
