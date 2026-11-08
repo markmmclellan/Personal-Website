@@ -139,20 +139,22 @@ img {
     top: 0;
     bottom: 0;
     width: 50%;
-    background-color: var(--paper);
+    /* translucent washi: the page behind shows through as soft, blurred shapes */
+    background-color: rgba(246, 240, 224, 0.72);
+    backdrop-filter: blur(5px) brightness(1.1);
+    -webkit-backdrop-filter: blur(5px) brightness(1.1);
     background-image:
         repeating-linear-gradient(to bottom, transparent 0, transparent calc(16.6667% - 3px), var(--wood) calc(16.6667% - 3px), var(--wood) 16.6667%),
         repeating-linear-gradient(to right, transparent 0, transparent calc(33.3333% - 3px), var(--wood) calc(33.3333% - 3px), var(--wood) 33.3333%),
-        radial-gradient(ellipse at 50% 40%, rgba(255, 255, 255, 0.55), transparent 70%);
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.36 0 0 0 0 0.27 0 0 0 0 0.17 0 0 0 0.55 -0.12'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+        radial-gradient(ellipse at 50% 40%, rgba(255, 255, 255, 0.5), transparent 70%);
+    background-size: auto, auto, 240px 240px, auto;
     box-shadow:
+        0 0 26px rgba(0, 0, 0, 0.35),
         inset 0 0 0 9px var(--wood),
         inset 0 0 60px rgba(110, 80, 40, 0.18);
     transition: transform var(--shoji-ms, 650ms) cubic-bezier(0.7, 0, 0.3, 1);
     will-change: transform;
-}
-
-.shoji.active .shoji-panel {
-    filter: drop-shadow(0 0 18px rgba(0, 0, 0, 0.35));
 }
 
 .shoji-left {
