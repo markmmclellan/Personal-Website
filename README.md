@@ -20,7 +20,7 @@ A single scrolling page (`index.html`) with a sticky navbar that jumps to each s
 - Frosted-glass ("glassmorphism") UI elements with 3D cursor-tilt hover effects
 - Canvas-based particle background that reacts to mouse movement
 - Scroll-spy navigation, staggered card reveals and cursor-following card glow
-- English / Japanese toggle (remembers your choice, honors `?lang=ja`, and defaults to Japanese for Japanese-language browsers)
+- English / Japanese toggle (remembers your choice, honors `?lang=ja`, and defaults to Japanese for Japanese-language browsers), with a shoji-door slide transition that is skipped for visitors who prefer reduced motion
 - Fully responsive layout
 - Color scheme inspired by the Japanese "Running Man" emergency exit sign
 

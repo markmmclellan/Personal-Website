@@ -1,4 +1,6 @@
 const LANG_KEY = 'site-lang';
+const DOORS_MS = 650;
+const HOLD_MS = 220;
 const rootEl = document.documentElement;
 
 const textEls = [...document.querySelectorAll('[data-i18n]')];
@@ -9,6 +11,19 @@ const langButtons = [...document.querySelectorAll('.lang-toggle button')];
 textEls.forEach((el) => { el.dataset.en = el.innerHTML; });
 placeholderEls.forEach((el) => { el.dataset.enPlaceholder = el.getAttribute('placeholder'); });
 ariaEls.forEach((el) => { el.dataset.enAria = el.getAttribute('aria-label'); });
+
+const shoji = document.createElement('div');
+shoji.className = 'shoji';
+shoji.setAttribute('aria-hidden', 'true');
+shoji.style.setProperty('--shoji-ms', `${DOORS_MS}ms`);
+shoji.innerHTML = '<div class="shoji-panel shoji-left"></div><div class="shoji-panel shoji-right"></div>';
+document.body.appendChild(shoji);
+
+let transitioning = false;
+
+function prefersReducedMotion() {
+    return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+}
 
 function setLanguage(lang, remember) {
     const ja = lang === 'ja';
@@ -39,6 +54,30 @@ function setLanguage(lang, remember) {
     document.dispatchEvent(new CustomEvent('langchange', { detail: { lang: ja ? 'ja' : 'en' } }));
 }
 
+// Doors slide shut, the text swaps while the page is hidden, then the doors slide open.
+function switchLanguage(lang) {
+    if (transitioning || lang === (rootEl.lang === 'ja' ? 'ja' : 'en')) return;
+
+    if (prefersReducedMotion()) {
+        setLanguage(lang, true);
+        return;
+    }
+
+    transitioning = true;
+    shoji.classList.add('active', 'closed');
+
+    setTimeout(() => {
+        setLanguage(lang, true);
+        setTimeout(() => {
+            shoji.classList.remove('closed');
+            setTimeout(() => {
+                shoji.classList.remove('active');
+                transitioning = false;
+            }, DOORS_MS);
+        }, HOLD_MS);
+    }, DOORS_MS);
+}
+
 function initialLanguage() {
     const fromUrl = new URLSearchParams(location.search).get('lang');
     if (fromUrl === 'ja' || fromUrl === 'en') return fromUrl;
@@ -51,7 +90,7 @@ function initialLanguage() {
 }
 
 langButtons.forEach((btn) => {
-    btn.addEventListener('click', () => setLanguage(btn.dataset.lang, true));
+    btn.addEventListener('click', () => switchLanguage(btn.dataset.lang));
 });
 
 setLanguage(initialLanguage(), false);
