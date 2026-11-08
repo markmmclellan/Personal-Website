@@ -140,9 +140,11 @@ img {
     bottom: 0;
     width: 50%;
     /* translucent washi: the page behind shows through as soft, blurred shapes */
-    background-color: rgba(246, 240, 224, 0.72);
+    background-color: rgba(232, 220, 190, 0.38);
     backdrop-filter: blur(5px) brightness(1.1);
     -webkit-backdrop-filter: blur(5px) brightness(1.1);
+    /* Chromium: turn anything that isn't the plain green background into a dark silhouette; other browsers keep the frosted look above */
+    backdrop-filter: url(#shoji-silhouette) blur(3px);
     background-image:
         repeating-linear-gradient(to bottom, transparent 0, transparent calc(16.6667% - 3px), var(--wood) calc(16.6667% - 3px), var(--wood) 16.6667%),
         repeating-linear-gradient(to right, transparent 0, transparent calc(33.3333% - 3px), var(--wood) calc(33.3333% - 3px), var(--wood) 33.3333%),
